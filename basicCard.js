@@ -22,3 +22,5 @@ first.printBack();
 /*if (!(this instanceof UserInfo)) {
    return new userSearch(name, loc);
 }*/
+
+module.exports = basic;
