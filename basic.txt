@@ -1,1 +1,1 @@
-{"front":"who is your dad?","back":"me"}[object Object]{"front":"Who is the pres?","back":"Trump"}{"front":"Who is the pres?","back":"Trump"}{"front":"Who is the pres?","back":"Trump"}{"front":"Who is the president?","back":"Trump"}{"front":"Who is the pres?","back":"Trump"}{"front":"Who is the pres?","back":"Trump"}
+who is the pres?trump{"front":"Who is the pres?","back":"Trump"}

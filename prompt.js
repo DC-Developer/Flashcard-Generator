@@ -66,13 +66,14 @@ function createBasicCard(){
         //console.log("Current answer: "+input.answer);
         var newBasic = new basicCard(input.question, input.answer);
 
-        var logBasic = JSON.stringify(newBasic);
         
-        fs.appendFile("basic.txt", logBasic);
+        fs.appendFile("basic.txt", JSON.stringify(newBasic));
         
+
         questions.push(newBasic);
         //console.log(questions);
         
+
         inquirer.prompt({
             type: "list",
             name: "query",
