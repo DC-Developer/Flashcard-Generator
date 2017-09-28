@@ -4,7 +4,7 @@ const clozeCard = require("./clozeCard");
 
 //create an array to hold all the questions
 var questions = [];
-
+var index = 0;
 //create a start function that starts the game and asks user to either make a card or take quiz
 
 function start(){
@@ -70,6 +70,25 @@ function createBasicCard(){
             if(choice.query === "Yes"){
                 createBasicCard();
                
+            }else{
+                inquirer.prompt({
+                    name: "toRun",
+                    message: "Would you like to start the game",
+                    type: "list",
+                    choices: [
+                        "Yes",
+                        "No"
+
+                    ]
+                }).then(function(result){
+                    if(result.toRun == "Yes"){
+                        playGame(questions);
+                    }else{
+                        start();
+
+                    }
+                });
+
             }
             
 
@@ -92,23 +111,29 @@ function createClozeCard(){
 
 function playGame(Questions){
 
-for(i = 0; i < Questions.length; i++){
-    
+
+if(index < Questions.length){   
     inquirer.prompt({
         type: "input",
-        message: Questions[i].front,
+        message: Questions[index].front,
         name: "answer" 
     }).then(function(result){
         console.log("Your answer: "+result.answer);
         
-        if(result.answer == Questions[i].back){
+        if(result.answer == Questions[index].back){
             console.log("You got it right!");
 
+        }else{
+            console.log("Wrong! The correct answer was: "+Questions[index].back);
+            
         }
+        index++;//increment the counter so on the next recursion the prompt goes into the next Questions index
+        playGame(questions);
+
     });
 
 
-}//end of for loop
+}//end of if loop
 
 
 
