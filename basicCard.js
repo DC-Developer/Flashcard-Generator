@@ -1,12 +1,18 @@
 function basic(front, back){
-    this.front = front,
-    this.back = back
-    this.printFront = function(){
-        console.log(front);
+    if(this instanceof basic){
+        this.front = front,
+        this.back = back
+        this.printFront = function(){
+            console.log(front);
+        }
+        this.printBack = function(){
+            console.log(back);
+        }
+
+    }else{
+        return new basic(front, back);
     }
-    this.printBack = function(){
-        console.log(back);
-    }
+
 }
 
 var question = process.argv[2];
@@ -24,3 +30,16 @@ first.printBack();
 }*/
 
 module.exports = basic;
+
+
+/*
+    //BONUS: scope-safe constructor
+    if(this instanceof BasicCard) {
+        this.front = front;
+        this.back = back;
+        } else {
+          return new BasicCard(front, back);
+        }
+    };
+
+    */
