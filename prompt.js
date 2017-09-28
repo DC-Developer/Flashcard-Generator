@@ -1,11 +1,13 @@
 const inquirer = require("inquirer");
 const basicCard = require("./basicCard");
 const clozeCard = require("./clozeCard");
+const fs = require("fs");
 
 //create an array to hold all the questions
 var questions = [];
 var clozeQuestions = [];
 var index = 0;
+var bool = false;
 //create a start function that starts the game and asks user to either make a card or take quiz
 
 function start(){
@@ -47,7 +49,7 @@ function start(){
 start();
 
 function createBasicCard(){
-   
+   bool = true;
     console.log("Input the question: ");
 
     inquirer.prompt([
@@ -176,7 +178,7 @@ function createClozeCard(){
 }
 
 function playGame(Questions){
-    if(Questions.length == 0){
+    if(bool == false){
         console.log("You need to make cards first!");
         createBasicCard();
     }

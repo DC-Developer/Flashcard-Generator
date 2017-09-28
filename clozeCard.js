@@ -1,17 +1,14 @@
-function cloze(text, cloze){  
-    if(this instanceof cloze){
+function clozeCard(text, cloze){  
+    
         this.text = text,
         this.cloze = cloze
         
-    }else{
-        return new cloze(text, cloze);
-
-    }
+   
 }
-cloze.prototype.splittingText= function(){
+clozeCard.prototype.splittingText= function(){
     var partialText = this.text.split(this.cloze);
     this.partial = partialText;
 };
 
 
-module.exports = cloze;
+module.exports = clozeCard;
