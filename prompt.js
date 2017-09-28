@@ -7,7 +7,6 @@ const fs = require("fs");
 var questions = [];
 var clozeQuestions = [];
 var index = 0;
-var bool = false;
 //create a start function that starts the game and asks user to either make a card or take quiz
 
 function start(){
@@ -27,19 +26,18 @@ function start(){
 
        switch(input.userChoice){
             case "Create Normal Cards": 
-                console.log("Create a card...");
                 createBasicCard();
                 break;
             case "Create Cloze Cards":
-                console.log("Create a cloze card...");
+                
                 createClozeCard();
                 break;
             case "Play Game":
-                console.log("Playing normal game!");
+                
                 playGame();
                 break;
             case "Play Cloze game":
-                console.log("Playing Cloze game!");
+               
                 playClozeGame();
                 break;
        }
@@ -49,7 +47,7 @@ function start(){
 start();
 
 function createBasicCard(){
-   bool = true;
+   
     console.log("Input the question: ");
 
     inquirer.prompt([
@@ -68,6 +66,9 @@ function createBasicCard(){
         //console.log("Current answer: "+input.answer);
         var newBasic = new basicCard(input.question, input.answer);
 
+        var logBasic = JSON.stringify(newBasic);
+        
+        fs.appendFile("basic.txt", logBasic);
         
         questions.push(newBasic);
         //console.log(questions);
@@ -132,7 +133,13 @@ function createClozeCard(){
          
             newCloze.splittingText();
 
+            var fileCloze = JSON.stringify(newCloze.cloze);
+            var fileText = JSON.stringify(newCloze.text);
+
             clozeQuestions.push(newCloze);
+           
+            fs.appendFile("cloze.txt",fileText);
+            fs.appendFile("cloze.txt",fileCloze);
             //console.log(questions);
             
             inquirer.prompt({
@@ -178,10 +185,7 @@ function createClozeCard(){
 }
 
 function playGame(Questions){
-    if(bool == false){
-        console.log("You need to make cards first!");
-        createBasicCard();
-    }
+
 
 if(index < Questions.length){   
     inquirer.prompt({
@@ -227,7 +231,7 @@ function playClozeGame(Questions){
                 
             }
             index++;//increment the counter so on the next recursion the prompt goes into the next Questions index
-            playGame(clozeQuestions);
+            playClozeGame(clozeQuestions);
     
         });
     
