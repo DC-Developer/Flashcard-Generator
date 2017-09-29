@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/DC-Developer/Flashcard-Generator/issues"
   },
-  "homepage": "https://github.com/DC-Developer/Flashcard-Generator#readme"
+  "homepage": "https://github.com/DC-Developer/Flashcard-Generator#readme",
+  "dependencies": {
+    "inquirer": "^3.3.0"
+  }
 }
