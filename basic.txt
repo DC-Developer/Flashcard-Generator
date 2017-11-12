@@ -1,1 +1,1 @@
-who is the pres?trump{"front":"Who is the pres?","back":"Trump"}
+{"front":"Who is the president?","back":"Donald trump"}{"front":"What is salty?","back":"Tears."}{"front":"Who is the president?","back":"Donald trump"}
